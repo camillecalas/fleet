@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Search from './components/Search';
-import TopRated from './components/TopRated';
+import Home from './components/Home';
+import SearchResults from './SearchResults';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,30 +27,32 @@ function App() {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API}&query=${query}`);
       setSearchResults(response.data.results);
+      // Naviguer vers une nouvelle URL pour afficher les résultats de recherche
+      navigate('/search-results');
     } catch (error) {
       console.error('Error searching:', error);
     }
   };
 
   return (
-		<div>
-			<h1>LOGO</h1>
-			<Search onSearch={handleSearch} />
-			{searchResults.length > 0 ? (
-				searchResults.map((movie) => (
-				<img
-					key={movie.id}
-					src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-					alt={movie.title}
-				/>
-				))
-			) : (
-				<TopRated/>
-			)}
-		</div>
-	);
+    <div>
+      <nav>
+        <div>
+          <Link to="/">
+            <h1>LOGO</h1>
+          </Link>
+        </div>
+        <Search onSearch={handleSearch} />
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home  />} />
+        <Route path="/search-results" element={<SearchResults searchResults={searchResults} />} />
+      </Routes>
+    </div>
+  );
 }
 
+
+
 export default App;
-
-
