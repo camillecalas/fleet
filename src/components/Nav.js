@@ -26,11 +26,16 @@ const StyledNav = styled.nav`
 	padding: 1rem 5rem;
 	background: #282828;
 
-	.link{
+	Link{
 		color: white;
 		text-decoration: none;
 		font-size: 1.2rem;
 		font-weight: lighter;
+	}
+
+	a {
+		color: white;
+		text-decoration: none;
 	}
 
 	#logo{

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import styled from 'styled-components'
+import styled from 'styled-components';
+
 
 function MovieDetails() {
   const { movieId } = useParams();
@@ -11,7 +12,6 @@ function MovieDetails() {
     const fetchMovieDetails = async () => {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_API}`);
-		console.log(response.data)
         setMovie(response.data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
@@ -19,137 +19,98 @@ function MovieDetails() {
     };
 
     fetchMovieDetails();
-  }, [movieId]); // Utilisation de movieId comme dépendance
+  }, [movieId]);
 
   if (!movie) {
     return <p>Loading...</p>;
   }
 
   return (
-    <StyledMovie>
-		<img
-			src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-			alt={movie.title}
-		/>
-		<h2>{movie.title}</h2>
-		<div id='details'>
-			<p id='runtime'>{movie.runtime} min | </p>
-			{movie.genres.map((genre, index) => (
-				index === movie.genres.length - 1 ? (
+    <MovieDetailsContainer $backgroundUrl={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
+      <MovieContent>
+        <img
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt={movie.title}
+        />
+        <div id='details_container'>
+				<h2>{movie.title}</h2>
+			<div id="details">
+				<p id='runtime'>{movie.runtime} min | </p>
+				{movie.genres.map((genre, index) => (
+					index === movie.genres.length - 1 ? (
 					<span key={index}>{genre.name}</span>
-				) : (
+					) : (
 					<span key={index}>{genre.name} / </span>
-				)
-			))}
-		</div>
-      	<p id='description'>{movie.overview}</p>
-    </StyledMovie>
+					)
+				))}
+			</div>
+        </div>
+        <p id='description'>{movie.overview}</p>
+      </MovieContent>
+    </MovieDetailsContainer>
   );
-
-
 }
 
 export default MovieDetails;
 
 
+const MovieDetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem;
+  position: relative;
+  /* padding: 2rem; */
+  background-image: url(${props => props.$backgroundUrl}); /* Note the $ prefix */
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+`;
 
-const StyledMovie = styled.div`
+const MovieContent = styled.div`
 	display: flex;
-	flex-direction:column;
+	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
-	margin: 2rem;
+	width: 100%;
+	height: 100vh;
+	padding: 2rem;
+	background-color: rgba(0, 0, 0, 0.6);
+
+	img{
+		width: 20rem;
+	}
+
+	#details_container{
+		display: flex; 
+		flex-direction: column;
+		align-items:center;
+		justify-content: center;
+	}
 
 	h2{
 		margin: 0rem;
-		padding: 0rem;
 	}
 
-	img {
-		height: 20rem;
-		/* object-fit: cover; */
-	}
-
-	#description{
-		width: 50%;
-	}
-	
-	#details{
+	#details {
 		display: flex;
-		gap: 0.5rem;
-		font-size: 1rem;
-		font-weight: lighter;
 		align-items: center;
+		gap:0.5rem;
+		font-weight: lighter;
 	}
+	#description {
+		width: 40%;
+		font-weight: 400;
+	}
+
+	@media (max-width: 780px) {
+		/* margin: 0; */
+		img{
+			width: 20rem;
+		}
+		#description {
+			width: 90%;
+  		}
+	}	
 `;
-
-
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import axios from 'axios';
-// import styled from 'styled-components';
-
-// const StyledMovieOverlay = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-// const StyledMovieDetails = styled.div`
-//   background-color: white;
-//   padding: 2rem;
-// `;
-
-// const MovieDetails = () => {
-//   const { movieId } = useParams();
-//   const [movie, setMovie] = useState(null);
-//   const [showModal, setShowModal] = useState(false);
-
-//   useEffect(() => {
-//     const fetchMovieDetails = async () => {
-//       try {
-//         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_API}`);
-//         console.log(response.data);
-//         setMovie(response.data);
-//         setShowModal(true); // Open the modal when movie details are fetched
-//       } catch (error) {
-//         console.error('Error fetching movie details:', error);
-//       }
-//     };
-
-//     fetchMovieDetails();
-//   }, [movieId]);
-
-//   const handleCloseModal = () => {
-//     setShowModal(false);
-//   };
-
-//   if (!movie) {
-//     return <p>Loading...</p>;
-//   }
-
-//   return (
-//     <>
-//       {showModal && (
-//         <StyledMovieOverlay onClick={handleCloseModal}>
-//           <StyledMovieDetails onClick={(e) => e.stopPropagation()}>
-//             <img
-//               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-//               alt={movie.title}
-//             />
-//             <h2>{movie.title}</h2>
-//             <p>{movie.overview}</p>
-//           </StyledMovieDetails>
-//         </StyledMovieOverlay>
-//       )}
-//     </>
-//   );
-// };
-
-// export default MovieDetails;
