@@ -1,5 +1,6 @@
 import React from 'react';
 import TopRated from './MovieLists';
+import MovieLists from './MovieLists';
 
 const Home = () => {
     // URL de l'API top rated
@@ -10,11 +11,11 @@ const Home = () => {
     return (
         <div>
 			<h1>Top rated</h1>
-            <TopRated apiUrl={topRatedUrl} />
+            <MovieLists apiUrl={topRatedUrl} />
 			<h1>Populair</h1>
-			<TopRated apiUrl={popular} />
+			<MovieLists apiUrl={popular} />
 			<h1>Up Coming</h1>
-			<TopRated apiUrl={upcoming} />
+			<MovieLists apiUrl={upcoming} />
         </div>
     );
 }

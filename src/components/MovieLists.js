@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import styled from 'styled-components'
 
-const MovieLists = () => {
+const MovieLists = ({apiUrl}) => {
 	const navigate = useNavigate();
 	const [MovieListsMovie, setMovieLists] = useState([]);
 
+	console.log(apiUrl)
     const handleMovieDetails = (movieId) => {
         navigate(`/${movieId}`);
     };
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_API}`);
+				const response = await axios.get(`${apiUrl}`);
 				setMovieLists(response.data.results);
 			} catch (error) {
 				console.error('Error fetching data:', error);
@@ -24,7 +26,7 @@ const MovieLists = () => {
 	
 	return (
 	
-		<div>
+		<StyledListMovies>
 			{MovieListsMovie.map((movie) => (
 				<img
 					onClick={()=> handleMovieDetails(movie.id)}
@@ -33,8 +35,24 @@ const MovieLists = () => {
 					alt={movie.title}
 				/>
 			))}
-		</div>
+		</StyledListMovies>
 	)
 }
 
 export default MovieLists
+
+const StyledListMovies = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	/* align-items: center; */
+	justify-content: center; 
+	gap: 1rem;
+	margin: auto;
+
+	img {
+		height: 20rem;
+		/* width: 20rem; */
+
+	}
+	
+`;
