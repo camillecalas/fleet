@@ -44,8 +44,8 @@ function MovieDetails() {
 					)
 				))}
 			</div>
-        </div>
         <p id='description'>{movie.overview}</p>
+        </div>
       </MovieContent>
     </MovieDetailsContainer>
   );
@@ -59,9 +59,7 @@ const MovieDetailsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin: 2rem;
   position: relative;
-  /* padding: 2rem; */
   background-image: url(${props => props.$backgroundUrl}); /* Note the $ prefix */
   height: 100vh;
   background-size: cover;
@@ -70,8 +68,10 @@ const MovieDetailsContainer = styled.div`
 
 const MovieContent = styled.div`
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	/* flex-direction: column;
+	align-items: center; */
+	flex-wrap: wrap;
+	justify-content:space-around;
 	gap: 1rem;
 	width: 100%;
 	height: 100vh;
@@ -79,7 +79,7 @@ const MovieContent = styled.div`
 	background-color: rgba(0, 0, 0, 0.6);
 
 	img{
-		width: 20rem;
+		/* width: 20rem; */
 	}
 
 	#details_container{
@@ -87,6 +87,11 @@ const MovieContent = styled.div`
 		flex-direction: column;
 		align-items:center;
 		justify-content: center;
+		background-color: rgba(0, 0, 0, 0.4);
+
+		padding: 2rem;
+		width: 40%;
+		
 	}
 
 	h2{
@@ -100,7 +105,7 @@ const MovieContent = styled.div`
 		font-weight: lighter;
 	}
 	#description {
-		width: 40%;
+		/* width: 40%; */
 		font-weight: 400;
 	}
 
@@ -112,5 +117,8 @@ const MovieContent = styled.div`
 		#description {
 			width: 90%;
   		}
+		#details_container{
+			width: 90%;
+		}
 	}	
 `;

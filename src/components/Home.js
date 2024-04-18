@@ -12,7 +12,7 @@ const Home = () => {
         <StyledContainener>
 			<h1>Top rated</h1>
             <MovieLists apiUrl={topRatedUrl} />
-			<h1>Populair</h1>
+			<h1>Popular</h1>
 			<MovieLists apiUrl={popular} />
 			<h1>Up Coming</h1>
 			<MovieLists apiUrl={upcoming} />

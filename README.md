@@ -2,9 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project is made with React/Styled-component/Integrate themovieDB API
+
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, 
+
+(in a real project, this would not be shared) 
+You need to create an .env and paste: 
+REACT_APP_MOVIE_API=e6c714714695cc03250300351cc13168
+
+you can run:
+
+### `npm install`
 
 ### `npm start`
 
