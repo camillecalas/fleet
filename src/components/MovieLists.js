@@ -42,17 +42,21 @@ const MovieLists = ({apiUrl}) => {
 export default MovieLists
 
 const StyledListMovies = styled.div`
-	display: flex;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 	/* align-items: center; */
-	justify-content: center; 
+	/* justify-content: center;  */
+	display: flex;
+	overflow-x: auto;
 	gap: 1rem;
-	margin: auto;
+	margin: 0rem 4rem ;
 
 	img {
 		height: 20rem;
-		/* width: 20rem; */
-
 	}
+
+	@media (max-width: 1300px) {
+   		margin: 0rem;
+	}
+   
 	
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
-import TopRated from './MovieLists';
 import MovieLists from './MovieLists';
+import styled from 'styled-components'
 
 const Home = () => {
     // URL de l'API top rated
@@ -9,15 +9,32 @@ const Home = () => {
 	const upcoming = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_API}`
 
     return (
-        <div>
+        <StyledContainener>
 			<h1>Top rated</h1>
             <MovieLists apiUrl={topRatedUrl} />
 			<h1>Populair</h1>
 			<MovieLists apiUrl={popular} />
 			<h1>Up Coming</h1>
 			<MovieLists apiUrl={upcoming} />
-        </div>
+        </StyledContainener>
     );
 }
 
 export default Home;
+
+const StyledContainener = styled.div`
+	
+	h1{
+		color:#23d997;
+		margin: 3rem 4rem 1rem 4rem;
+	}
+
+	@media (max-width: 1300px) {
+		h1{
+			align-items: center;
+		margin: 3rem 0rem 1rem 1rem;
+	}
+	}
+   
+	
+`;
