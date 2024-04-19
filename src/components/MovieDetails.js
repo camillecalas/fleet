@@ -96,12 +96,14 @@ const MovieContent = styled.div`
 	#details {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		gap:0.5rem;
 		font-weight: lighter;
 	}
 
 	#description {
 		font-weight: 400;
+		width: 100%; 
 	}
 
 	@media (max-width: 1030px) {
@@ -115,4 +117,22 @@ const MovieContent = styled.div`
 			width: 90%;
 		}
 	}	
+
+	@media (max-width: 600px) {
+		img{
+			width: 10rem;
+			object-fit: cover;
+		}
+		#description {
+			width: 95%;
+  		}
+		#details_container{
+			width: 95%;
+		}
+		#details{
+			line-height: 0.3rem;
+		}
+	}	
+
+
 `;
