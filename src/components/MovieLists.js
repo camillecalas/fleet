@@ -7,10 +7,10 @@ const MovieLists = ({apiUrl}) => {
 	const navigate = useNavigate();
 	const [MovieListsMovie, setMovieLists] = useState([]);
 
-	console.log(apiUrl)
     const handleMovieDetails = (movieId) => {
         navigate(`/${movieId}`);
     };
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -42,9 +42,6 @@ const MovieLists = ({apiUrl}) => {
 export default MovieLists
 
 const StyledListMovies = styled.div`
-	/* flex-wrap: wrap; */
-	/* align-items: center; */
-	/* justify-content: center;  */
 	display: flex;
 	overflow-x: auto;
 	gap: 1rem;
@@ -57,6 +54,4 @@ const StyledListMovies = styled.div`
 	@media (max-width: 1300px) {
    		margin: 0rem;
 	}
-   
-	
 `;

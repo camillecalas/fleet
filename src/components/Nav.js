@@ -40,21 +40,17 @@ const StyledNav = styled.nav`
 
 	#logo{
 		font-size: 1.5rem;
-		/* font-family: "Lobster", cursive; */
-		font-family: "Seymour One", sans-serif;
-		font-weight: lighter;
-		color: orange;
+		font-family: "Anton", sans-serif;
+		color: #fdd82e;
 		text-decoration: none;
 	}
 
 	@media (max-width: 1300px) {
-    flex-direction: column;
-    padding: 2rem 1rem;
-    #logo {
-      display: inline-block;
-      margin: 1rem;
-    }
-   
-  }
-
-`
+		flex-direction: column;
+		padding: 2rem 1rem;
+		#logo {
+		display: inline-block;
+		margin: 1rem;
+		}
+	}
+`;
