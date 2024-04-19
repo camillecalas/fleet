@@ -35,6 +35,7 @@ To install dependencies, run:
 
 ### Starting the Application:
 To start the application in development mode, run:
+
 `npm start`
 
 This command will launch the application on http://localhost:3000, allowing you to view it in your preferred web browser.
