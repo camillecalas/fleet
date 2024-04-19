@@ -13,6 +13,7 @@ function MovieDetails() {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_API}`);
         setMovie(response.data);
+		console.log(response.data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -73,13 +74,14 @@ const MovieContent = styled.div`
 	flex-wrap: wrap;
 	justify-content:space-around;
 	gap: 1rem;
-	width: 100%;
+	/* width: 100%; */
 	height: 100vh;
 	padding: 2rem;
 	background-color: rgba(0, 0, 0, 0.6);
 
 	img{
 		/* width: 20rem; */
+		/* box-shadow: 0px 4px 8px rgba(0, 0.7, 0, 0.6);  */
 	}
 
 	#details_container{
@@ -109,7 +111,7 @@ const MovieContent = styled.div`
 		font-weight: 400;
 	}
 
-	@media (max-width: 780px) {
+	@media (max-width: 1030px) {
 		/* margin: 0; */
 		img{
 			width: 20rem;

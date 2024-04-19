@@ -25,14 +25,14 @@ export default Home;
 const StyledContainener = styled.div`
 	
 	h1{
-		color:#23d997;
+		/* color:#23d997; */
 		margin: 3rem 4rem 1rem 4rem;
 	}
 
 	@media (max-width: 1300px) {
 		h1{
 			align-items: center;
-		margin: 3rem 0rem 1rem 1rem;
+			margin: 3rem 0rem 1rem 1rem;
 	}
 	}
    

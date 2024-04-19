@@ -40,9 +40,10 @@ const StyledNav = styled.nav`
 
 	#logo{
 		font-size: 1.5rem;
-		font-family: "Lobster", cursive;
+		/* font-family: "Lobster", cursive; */
+		font-family: "Seymour One", sans-serif;
 		font-weight: lighter;
-		color: white;
+		color: orange;
 		text-decoration: none;
 	}
 

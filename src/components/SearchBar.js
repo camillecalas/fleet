@@ -43,6 +43,6 @@ const StyledInput = styled.input`
 	cursor: pointer;
 
 	&:focus {
-		border-color: dodgerBlue;
+		border-color: orange;
 	}
 `;
