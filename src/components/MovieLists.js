@@ -22,7 +22,7 @@ const MovieLists = ({apiUrl}) => {
 		};
 	
 		fetchData();
-	}, []);
+	}, [apiUrl]);
 	
 	return (
 	
