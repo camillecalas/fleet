@@ -26,7 +26,6 @@ Before running the application, you need to create an .env file in the root dire
 
 `REACT_APP_MOVIE_API=e6c714714695cc03250300351cc13168`
 
-you can run:
 
 ### Installation:
 To install dependencies, run:
