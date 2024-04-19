@@ -20,12 +20,8 @@ Movie Details Component:
 
 In the project directory, 
 
-### .env Configuration:
-(Please note that the API key provided here is for educational purposes only. In a production environment, it would be securely managed.)
-Before running the application, you need to create an .env file in the root directory and paste the following line:
-
-`REACT_APP_MOVIE_API=e6c714714695cc03250300351cc13168`
-
+### .env:
+Please be aware that the .env file has not been removed, allowing access to the API key provided for educational purposes only. In a production environment, API keys would be securely managed.
 
 ### Installation:
 To install dependencies, run:
