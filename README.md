@@ -1,4 +1,4 @@
-# React - Movie browsing ap
+# React - Movie browsing app
 
 This project aims to create a simple and intuitive platform for users to explore a wide array of movies.
 
